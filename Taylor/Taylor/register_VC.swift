@@ -9,9 +9,48 @@ import UIKit
 
 class register_VC: UIViewController {
 
+    
+    @IBOutlet weak var error_label: UILabel!
+    
+    @IBOutlet weak var password_text: UITextField!
+    @IBOutlet weak var username_text: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "success"{
+            if let destination = segue.destination as?success_VC{
+                destination.text = "注册成功"
+                 
+            }
+        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        if identifier == "success"{
+            
+            if username_text==nil||username_text.text==""{
+                error_label.text = "请输入用户名"
+                return false
+            }
+            if password_text==nil||password_text.text==""{
+                error_label.text = "请输入密码"
+                return false
+            }
+            
+            error_label.text = nil
+            
+            }
+        
+        
+        return true
     }
 
     @IBAction func click_login_button(_ sender: UIButton) {

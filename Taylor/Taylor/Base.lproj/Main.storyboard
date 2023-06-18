@@ -52,7 +52,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="点击注册"/>
                                                 <connections>
-                                                    <segue destination="mwF-SF-lkP" kind="show" id="fgY-Du-qVK"/>
+                                                    <segue destination="mwF-SF-lkP" kind="show" identifier="register" id="fgY-Du-qVK"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -64,7 +64,7 @@
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="30"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="tet-Up-KqH" kind="presentation" modalPresentationStyle="fullScreen" id="Q4Y-wh-Dm9"/>
+                                            <segue destination="tet-Up-KqH" kind="presentation" identifier="success" modalPresentationStyle="fullScreen" id="Q4Y-wh-Dm9"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -85,6 +85,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="登陆" id="P1I-pE-Hh8"/>
+                    <connections>
+                        <outlet property="error_label" destination="z31-Rv-bRF" id="ikN-w7-eoN"/>
+                        <outlet property="password_text" destination="Yca-nH-Pee" id="Xwr-0o-9z7"/>
+                        <outlet property="username_text" destination="39V-Wv-FWO" id="LLf-5v-9Pv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -143,7 +148,7 @@
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="30"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="tet-Up-KqH" kind="presentation" modalPresentationStyle="fullScreen" id="JEy-BN-8Cd"/>
+                                            <segue destination="tet-Up-KqH" kind="presentation" identifier="success" modalPresentationStyle="fullScreen" id="JEy-BN-8Cd"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -163,6 +168,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="注册" id="mn1-VN-YAe"/>
+                    <connections>
+                        <outlet property="error_label" destination="G4l-xY-Vuq" id="50u-xf-hDf"/>
+                        <outlet property="password_text" destination="So2-Vm-xYU" id="hdE-kN-9jS"/>
+                        <outlet property="username_text" destination="iuS-VJ-lu1" id="8Tk-qO-tMh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dJ5-BV-zyy" sceneMemberID="firstResponder"/>
             </objects>
