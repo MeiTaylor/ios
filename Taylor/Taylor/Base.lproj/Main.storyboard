@@ -261,13 +261,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLw-De-die">
-                                        <rect key="frame" x="24" y="66" width="145.33333333333331" height="50"/>
+                                        <rect key="frame" x="24" y="66" width="145.33333333333334" height="50"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="点击进入">
                                             <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="click_exit:" destination="tet-Up-KqH" eventType="touchUpInside" id="g8z-aV-3Xt"/>
+                                            <segue destination="TSf-Hq-AiK" kind="show" id="QcP-M1-TgR"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -289,26 +289,83 @@
             </objects>
             <point key="canvasLocation" x="1591.6030534351144" y="12.67605633802817"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="YxP-Ml-zi0">
+        <!--运动记录-->
+        <scene sceneID="Pwq-E3-F1K">
             <objects>
-                <viewController id="9mK-FV-3we" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8Y1-Zz-EkI">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                <viewController id="SsY-kr-TBj" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="76a-ws-rUh">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="Idc-hT-t2b"/>
+                        <viewLayoutGuide key="safeArea" id="RJJ-0v-5K1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="运动记录" selectedImage="list.clipboard" catalog="system" id="TYF-SB-ihL"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gw0-sk-4Eb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="umo-26-Gks" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2717" y="13"/>
+            <point key="canvasLocation" x="3860" y="742"/>
+        </scene>
+        <!--运动-->
+        <scene sceneID="IhW-BB-GQG">
+            <objects>
+                <viewController id="0fw-f8-GP9" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vb0-Ln-B6y" customClass="Sport_">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="OF1-CT-J81"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="运动" selectedImage="figure.run.circle" catalog="system" id="Inf-Vs-noC"/>
+                    <navigationItem key="navigationItem" id="szF-Lv-Mlp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4MK-Nj-cD0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2894" y="742"/>
+        </scene>
+        <!--Tab bar-->
+        <scene sceneID="mem-Jt-Cyk">
+            <objects>
+                <tabBarController id="TSf-Hq-AiK" customClass="tab_bar" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="0K1-nB-o5r"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SzO-Aj-Fnd">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="0fw-f8-GP9" kind="relationship" relationship="viewControllers" id="5uH-Yq-90T"/>
+                        <segue destination="SsY-kr-TBj" kind="relationship" relationship="viewControllers" id="oQx-5a-ryw"/>
+                        <segue destination="gBm-4O-nfP" kind="relationship" relationship="viewControllers" id="33F-gf-GXg"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QB9-X3-5oP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3540" y="-70"/>
+        </scene>
+        <!--个人信息-->
+        <scene sceneID="fjz-2c-tjN">
+            <objects>
+                <viewController id="gBm-4O-nfP" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XUm-Dy-Gp7">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="s8k-2J-ehS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="个人信息" selectedImage="person.circle.fill" catalog="system" id="veT-U9-Hnl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oWc-8Z-waU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4865" y="742"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Q4Y-wh-Dm9"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="figure.run.circle" catalog="system" width="128" height="123"/>
+        <image name="list.clipboard" catalog="system" width="103" height="128"/>
+        <image name="person.circle.fill" catalog="system" width="128" height="123"/>
         <image name="run.png" width="279.75" height="374.25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

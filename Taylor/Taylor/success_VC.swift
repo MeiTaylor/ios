@@ -11,9 +11,6 @@ class success_VC: UIViewController {
 
     var text = ""
     
-    @IBAction func click_exit(_ sender: UIButton) {
-        dismiss(animated: true,completion: nil)
-    }
     
     @IBOutlet weak var text_label: UILabel!
     override func viewDidLoad() {
