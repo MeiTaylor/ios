@@ -8,15 +8,26 @@
 import UIKit
 
 class mine: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
+    @IBOutlet weak var existButton: UIButton!
+    
     @IBOutlet weak var chooseButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
       
         chooseButton.addTarget(self, action: #selector(chooseImage), for: .touchUpInside)
+        
+        existButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
         }
+    
+    @objc func logout() {
+           let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+           sceneDelegate.resetToLoginScreen()
+       }
     
     @objc func chooseImage() {
         let alertController = UIAlertController(title: "选择图片", message: "请选择一个选项", preferredStyle: .actionSheet)

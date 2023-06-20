@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TSf-Hq-AiK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dbq-PQ-Wxo">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
@@ -11,7 +11,7 @@
         <!--登陆-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="login_VC" customModule="Taylor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login_VC" id="BYZ-38-t0r" customClass="login_VC" customModule="Taylor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -266,6 +266,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="点击进入">
                                             <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="TSf-Hq-AiK" kind="presentation" modalPresentationStyle="fullScreen" id="TBd-UI-kI6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -315,7 +318,7 @@
                     <connections>
                         <segue destination="dIH-Nl-UKr" kind="relationship" relationship="viewControllers" id="q5o-PG-oaK"/>
                         <segue destination="SsY-kr-TBj" kind="relationship" relationship="viewControllers" id="oQx-5a-ryw"/>
-                        <segue destination="gBm-4O-nfP" kind="relationship" relationship="viewControllers" id="33F-gf-GXg"/>
+                        <segue destination="JDa-Lh-erP" kind="relationship" relationship="viewControllers" id="33F-gf-GXg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QB9-X3-5oP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -342,7 +345,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="bmg-O1-hnL">
-                                <rect key="frame" x="88" y="392" width="217" height="227"/>
+                                <rect key="frame" x="88" y="426" width="217" height="227"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZ7-2o-n5p">
                                         <rect key="frame" x="36" y="0.0" width="145.33333333333334" height="50"/>
@@ -351,7 +354,7 @@
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="30"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="89r-xu-y8P" kind="presentation" modalPresentationStyle="fullScreen" id="Fn3-5j-XCr"/>
+                                            <segue destination="89r-xu-y8P" kind="show" id="WZH-No-Pfe"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yoO-wk-qdC">
@@ -360,6 +363,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="设置">
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="30"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="SZ8-yr-Odh" kind="show" id="ohv-YV-V5F"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tu8-JO-NRj">
                                         <rect key="frame" x="36" y="118" width="145.33333333333334" height="50"/>
@@ -367,6 +373,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="软件信息">
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="30"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="SVk-VX-bYU" kind="show" id="3zp-7c-qJj"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTr-2g-0PX">
                                         <rect key="frame" x="36" y="177" width="145.33333333333334" height="50"/>
@@ -393,150 +402,16 @@
                             <constraint firstItem="bmg-O1-hnL" firstAttribute="leading" secondItem="s8k-2J-ehS" secondAttribute="leading" constant="88" id="b32-vN-yPv"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="mine" selectedImage="person.circle.fill" catalog="system" id="veT-U9-Hnl"/>
+                    <navigationItem key="navigationItem" id="IZp-qm-gYR"/>
                     <connections>
                         <outlet property="chooseButton" destination="xGC-xR-m5c" id="Qt3-rQ-OcB"/>
+                        <outlet property="existButton" destination="LTr-2g-0PX" id="qn7-uf-PJZ"/>
                         <outlet property="imageView" destination="47T-QD-NCB" id="zDX-pQ-iCm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWc-8Z-waU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4864.8854961832058" y="741.54929577464793"/>
-        </scene>
-        <!--Peroson Screen-->
-        <scene sceneID="Vkm-Mx-vFl">
-            <objects>
-                <viewController id="SIm-HA-CMd" customClass="PerosonScreen" customModule="Taylor" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="g9S-v2-Gp9">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yc8-iS-f0a">
-                                <rect key="frame" x="80" y="350.33333333333337" width="141.33333333333331" height="210"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jdp-Vj-pLb">
-                                        <rect key="frame" x="0.0" y="0.0" width="141.33333333333334" height="34"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoD-xY-BGp">
-                                                <rect key="frame" x="0.0" y="0.0" width="76" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <color key="textColor" systemColor="systemTealColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R9N-6x-bZ8">
-                                                <rect key="frame" x="84" y="0.0" width="57.333333333333343" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qov-K3-62G">
-                                        <rect key="frame" x="0.0" y="44" width="141.33333333333334" height="34"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机号：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXf-aG-4PS">
-                                                <rect key="frame" x="0.0" y="0.0" width="101.33333333333333" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <color key="textColor" systemColor="systemTealColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QnZ-YG-LQG">
-                                                <rect key="frame" x="109.33333333333333" y="0.0" width="31.999999999999986" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bhd-J1-lh2">
-                                        <rect key="frame" x="0.0" y="88" width="141.33333333333334" height="34"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邮箱：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDC-lL-Fgu">
-                                                <rect key="frame" x="0.0" y="0.0" width="76" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <color key="textColor" systemColor="systemTealColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L1N-Ks-3fu">
-                                                <rect key="frame" x="84" y="0.0" width="57.333333333333343" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="gBU-YL-OEA">
-                                        <rect key="frame" x="0.0" y="132" width="141.33333333333334" height="34"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地址：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G01-y2-Ppd">
-                                                <rect key="frame" x="0.0" y="0.0" width="76" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <color key="textColor" systemColor="systemMintColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2ju-Qh-TEw">
-                                                <rect key="frame" x="103" y="0.0" width="38.333333333333343" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXD-dM-obs">
-                                        <rect key="frame" x="0.0" y="176" width="141.33333333333334" height="34"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身高：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sp9-Gc-hex">
-                                                <rect key="frame" x="0.0" y="0.0" width="76" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <color key="textColor" systemColor="systemMintColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qzr-NM-U0e">
-                                                <rect key="frame" x="76" y="0.0" width="65.333333333333314" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYw-tQ-hh6">
-                                <rect key="frame" x="154.33333333333334" y="592" width="84.666666666666657" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="保存">
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="30"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="clickSaveButton:" destination="SIm-HA-CMd" eventType="touchUpInside" id="yIa-ZQ-bZQ"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="个人信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oul-fJ-IHb">
-                                <rect key="frame" x="16" y="94" width="201" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6l8-Of-17c"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <gestureRecognizers/>
-                    </view>
-                    <navigationItem key="navigationItem" id="IJn-Ah-C2Y"/>
-                    <connections>
-                        <outlet property="NickName" destination="R9N-6x-bZ8" id="oCB-zH-GbU"/>
-                        <outlet property="PhoneNumber" destination="L1N-Ks-3fu" id="9WG-8a-Khk"/>
-                        <outlet property="SaveButton" destination="DYw-tQ-hh6" id="4IV-k1-JmS"/>
-                        <outlet property="pwd" destination="QnZ-YG-LQG" id="zge-R9-KSw"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xDJ-9Z-vu8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="2Rn-ib-kdL">
-                    <connections>
-                        <action selector="tapImageView:" destination="SIm-HA-CMd" id="GSp-Qw-lU9"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="4918" y="2114"/>
+            <point key="canvasLocation" x="5791.6030534351139" y="741.54929577464793"/>
         </scene>
         <!--person_sport_design-->
         <scene sceneID="a3U-QN-VLW">
@@ -547,24 +422,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="daP-AC-wxB">
-                                <rect key="frame" x="43" y="255" width="282.66666666666669" height="44"/>
+                                <rect key="frame" x="43" y="255" width="121.33333333333331" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="运动单位" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80k-t8-koV">
-                                        <rect key="frame" x="0.0" y="0.0" width="121.33333333333333" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="121.33333333333333" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMh-8K-0HH">
-                                        <rect key="frame" x="157.33333333333334" y="0.0" width="125.33333333333334" height="44"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="点击选择">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <segue destination="cAE-vq-KHG" kind="presentation" identifier="showDropdownMenu" id="SXE-HC-0kg"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pm-Io-aSi">
@@ -575,13 +440,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="任务计划" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFa-qP-EUH">
-                                <rect key="frame" x="42.999999999999993" y="365" width="121.33333333333331" height="36"/>
+                                <rect key="frame" x="42.999999999999993" y="350" width="121.33333333333331" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Buk-vO-TUq">
-                                <rect key="frame" x="69" y="431" width="255" height="166"/>
+                                <rect key="frame" x="69" y="416" width="255" height="166"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="63r-xi-Vwg">
                                         <rect key="frame" x="0.0" y="0.0" width="255" height="34"/>
@@ -649,6 +514,20 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Srr-sR-LLS">
+                                <rect key="frame" x="189" y="255" width="145.66666666666697" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSv-xZ-Iwe">
+                                <rect key="frame" x="134" y="641" width="125" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="提交">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="50"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dEd-x2-ayE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -660,26 +539,27 @@
                             <constraint firstItem="Buk-vO-TUq" firstAttribute="top" secondItem="GFa-qP-EUH" secondAttribute="bottom" constant="30" id="zWk-rp-ljT"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="bzP-72-v8k"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="62K-zw-2lq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6271" y="2182"/>
+            <point key="canvasLocation" x="7297" y="742"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="HTi-f3-p8C">
+        <scene sceneID="5fw-Fk-hgq">
             <objects>
-                <viewController id="cAE-vq-KHG" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="V3g-qK-ccN">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                <viewController id="SVk-VX-bYU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KOO-rr-Fbc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="PVv-jd-39B"/>
+                        <viewLayoutGuide key="safeArea" id="h0K-mu-Dgd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RxJ-jX-5z0"/>
+                    <navigationItem key="navigationItem" id="1Mf-o2-dkR"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kD9-es-mtW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eiD-fD-nkE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7219" y="1855"/>
+            <point key="canvasLocation" x="7197" y="1457"/>
         </scene>
         <!--sport-->
         <scene sceneID="Y5D-4T-fzc">
@@ -752,23 +632,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8cQ-WT-7ss" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2985.4961832061067" y="809.85915492957747"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="paS-su-g0m">
-            <objects>
-                <viewController id="Y9a-2N-kuQ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="VpS-Py-SoT">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="jVf-KB-mbH"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Plc-Xk-90G"/>
-                    <navigationItem key="navigationItem" id="JhC-M1-N4g"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aBK-sH-yS5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4007" y="1703"/>
         </scene>
         <!--personal_info-->
         <scene sceneID="tIU-0s-Xdu">
@@ -887,6 +750,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="提交">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="89r-xu-y8P" eventType="touchUpInside" id="a2E-QU-21D"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Tlz-xu-agC"/>
@@ -898,10 +764,37 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="个人信息" selectedImage="person.circle.fill" catalog="system" id="rzN-ks-WGc"/>
                     <navigationItem key="navigationItem" id="gu2-BW-coo"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="jtX-GM-71g" id="khg-K1-dpf"/>
+                        <outlet property="emailTextField" destination="ZCY-eY-iow" id="Qjn-Jg-qwM"/>
+                        <outlet property="heightTextField" destination="bQj-KX-M72" id="yfV-Qb-hmB"/>
+                        <outlet property="nicknameTextField" destination="7nT-e8-HfV" id="OxB-CJ-caO"/>
+                        <outlet property="phoneNumberTextField" destination="Meg-R1-27P" id="pka-IQ-9lu"/>
+                        <outlet property="weightTextField" destination="UPB-Hq-TeW" id="bgb-ix-CE1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBQ-ky-TDC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5790.0763358778622" y="741.54929577464793"/>
+            <point key="canvasLocation" x="7298" y="-25"/>
+        </scene>
+        <!--mine-->
+        <scene sceneID="ra7-Jl-SVu">
+            <objects>
+                <navigationController wantsFullScreenLayout="YES" automaticallyAdjustsScrollViewInsets="NO" id="JDa-Lh-erP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="mine" selectedImage="person.circle.fill" catalog="system" id="veT-U9-Hnl"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TGe-fW-KiT">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gBm-4O-nfP" kind="relationship" relationship="rootViewController" id="4nw-d2-pwv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fi0-S6-9OX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4864.8854961832058" y="741.54929577464793"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -925,9 +818,6 @@
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemMintColor">
-            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

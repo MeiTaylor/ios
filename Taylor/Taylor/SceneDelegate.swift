@@ -10,6 +10,14 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    func resetToLoginScreen() {
+           let storyboard = UIStoryboard(name: "Main", bundle: nil)
+           let loginVC = storyboard.instantiateViewController(withIdentifier: "login_VC") as! login_VC
+
+           window?.rootViewController = loginVC
+           window?.makeKeyAndVisible()
+       }
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {

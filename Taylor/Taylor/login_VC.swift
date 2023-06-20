@@ -20,7 +20,7 @@ class login_VC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print(error_label.text)
+        //print(error_label.text)
         error_label.text=""
 
 
@@ -74,27 +74,25 @@ class login_VC: UIViewController {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        
-        if identifier == "success"{
-            
-            
-            if let username = username_text.text, !username.isEmpty,
-               let password = password_text.text, !password.isEmpty {
-                if UserManager.shared.login(username: username, password: password) {
-                    return true
+            if identifier == "success" {
+                if let username = username_text.text, !username.isEmpty,
+                   let password = password_text.text, !password.isEmpty {
+                    if UserManager.shared.login(username: username, password: password) {
+                        // 当登录成功后，将用户名保存到UserDefaults
+                        UserDefaults.standard.set(username, forKey: "currentUsername")
+                        return true
+                    } else {
+                        error_label.text = "用户名或密码错误"
+                        return false
+                    }
                 } else {
-                    error_label.text = "用户名或密码错误"
+                    error_label.text = "请输入用户名和密码"
                     return false
                 }
-            } else {
-                error_label.text = "请输入用户名和密码"
-                return false
             }
+            error_label.text = ""
+            
+            return true
         }
-        error_label.text = ""
-        
-        return true
-        
-    }
 
 }

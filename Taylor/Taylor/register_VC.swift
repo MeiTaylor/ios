@@ -40,35 +40,37 @@ class register_VC: UIViewController {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        
-        if identifier == "success"{
             
+        if identifier == "success" {
+                
             if let username = username_text.text, !username.isEmpty,
-                  let password = password_text.text, !password.isEmpty {
-                   let phoneNumber = phone_number.text
-                   let livingAddress = living_address.text
-                   let email = email.text
-                   if UserManager.shared.register(username: username, password: password, phoneNumber: phoneNumber, livingAddress: livingAddress, email: email) {
+                let password = password_text.text, !password.isEmpty {
+                    let phoneNumber = phone_number.text
+                    let livingAddress = living_address.text
+                    let email = email.text
+                    // Height and Weight not provided at registration.
+                    if UserManager.shared.register(username: username, password: password, phoneNumber: phoneNumber, livingAddress: livingAddress, email: email) {
                        
-                       let allUsers = UserManager.shared.getAllUsers()
-                                for user in allUsers {
-                                    print("Username: \(user.0), Password: \(user.1), PhoneNumber: \(user.2 ?? "N/A"), LivingAddress: \(user.3 ?? "N/A"), Email: \(user.4 ?? "N/A")")
-                                }
+                        let allUsers = UserManager.shared.getAllUsers()
+                        for user in allUsers {
+                            print("Username: \(user.0), Password: \(user.1), PhoneNumber: \(user.2 ?? "N/A"), LivingAddress: \(user.3 ?? "N/A"), Email: \(user.4 ?? "N/A"), Height: \(user.5 ?? "N/A"), Weight: \(user.6 ?? "N/A")")
+                        }
                        
-                       return true
-                   } else {
-                       error_label.text = "注册失败，可能是用户名已被注册"
-                       return false
-                   }
-               } else {
-                   error_label.text = "请输入用户名和密码"
-                   return false
-               }
+                        return true
+                    } else {
+                        error_label.text = "注册失败，可能是用户名已被注册"
+                        return false
+                    }
+            } else {
+                error_label.text = "请输入用户名和密码"
+                return false
+            }
         }
         
         error_label.text = ""
         return true
     }
+
 
     @IBAction func click_login_button(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)

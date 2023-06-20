@@ -32,18 +32,34 @@ class UserManager {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("Error creating table: \(errmsg)")
         }
+        
+        
+        // include Height and Weight
+        if sqlite3_exec(db, "ALTER TABLE Users ADD COLUMN Height TEXT", nil, nil, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("Error adding height column: \(errmsg)")
+        }
+
+        if sqlite3_exec(db, "ALTER TABLE Users ADD COLUMN Weight TEXT", nil, nil, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("Error adding weight column: \(errmsg)")
+        }
+
+        
+        
     }
     
-    func register(username: String, password: String, phoneNumber: String?, livingAddress: String?, email: String?) -> Bool {
+    func register(username: String, password: String, phoneNumber: String?, livingAddress: String?, email: String?, height: String? = nil, weight: String? = nil) -> Bool {
+        
         var stmt: OpaquePointer?
-        let queryString = "INSERT INTO Users (Username, Password, PhoneNumber, LivingAddress, Email) VALUES (?,?,?,?,?)"
+        let queryString = "INSERT INTO Users (Username, Password, PhoneNumber, LivingAddress, Email, Height, Weight) VALUES (?,?,?,?,?,?,?)"
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("Error preparing insert: \(errmsg)")
             return false
         }
-        
+         
         if sqlite3_bind_text(stmt, 1, username, -1, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("Failure binding username: \(errmsg)")
@@ -80,6 +96,26 @@ class UserManager {
             }
         }
         
+        // Binding height and weight.
+        if let height = height {
+                if sqlite3_bind_text(stmt, 6, height, -1, nil) != SQLITE_OK{
+                    let errmsg = String(cString: sqlite3_errmsg(db)!)
+                    print("Failure binding height: \(errmsg)")
+                    return false
+                }
+            }
+
+            if let weight = weight {
+                if sqlite3_bind_text(stmt, 7, weight, -1, nil) != SQLITE_OK{
+                    let errmsg = String(cString: sqlite3_errmsg(db)!)
+                    print("Failure binding weight: \(errmsg)")
+                    return false
+                }
+            }
+
+        
+        
+        
         if sqlite3_step(stmt) != SQLITE_DONE {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("Failure inserting user: \(errmsg)")
@@ -88,6 +124,42 @@ class UserManager {
         
         return true
     }
+    
+    
+    // Your existing methods here (register, login, getAllUsers)
+
+     func getUserInfo(username: String) -> (String, String, String?, String?, String?, String?, String?)? {
+         var stmt: OpaquePointer?
+         let queryString = "SELECT * FROM Users WHERE Username = ?"
+
+         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+             let errmsg = String(cString: sqlite3_errmsg(db)!)
+             print("Error preparing select: \(errmsg)")
+             return nil
+         }
+         
+         if sqlite3_bind_text(stmt, 1, username, -1, nil) != SQLITE_OK{
+             let errmsg = String(cString: sqlite3_errmsg(db)!)
+             print("Failure binding username: \(errmsg)")
+             return nil
+         }
+         
+         if sqlite3_step(stmt) == SQLITE_ROW {
+             let username = String(cString: sqlite3_column_text(stmt, 0))
+             let password = String(cString: sqlite3_column_text(stmt, 1))
+             let phoneNumber = sqlite3_column_text(stmt, 2) != nil ? String(cString: sqlite3_column_text(stmt, 2)) : nil
+             let livingAddress = sqlite3_column_text(stmt, 3) != nil ? String(cString: sqlite3_column_text(stmt, 3)) : nil
+             let email = sqlite3_column_text(stmt, 4) != nil ? String(cString: sqlite3_column_text(stmt, 4)) : nil
+             let height = sqlite3_column_text(stmt, 5) != nil ? String(cString: sqlite3_column_text(stmt, 5)) : nil
+             let weight = sqlite3_column_text(stmt, 6) != nil ? String(cString: sqlite3_column_text(stmt, 6)) : nil
+             
+             return (username, password, phoneNumber, livingAddress, email, height, weight)
+         } else {
+             return nil
+         }
+     }
+    
+    
     
     func login(username: String, password: String) -> Bool {
         var stmt: OpaquePointer?
@@ -119,10 +191,13 @@ class UserManager {
     }
     
     
-    func getAllUsers() -> [(String, String, String?, String?, String?)] {
+    func getAllUsers() -> [(String, String, String?, String?, String?, String?, String?)]   {
+
         var stmt: OpaquePointer?
         let queryString = "SELECT * FROM Users"
-        var result = [(String, String, String?, String?, String?)]()
+        var result = [(String, String, String?, String?, String?, String?, String?)]()
+
+
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
@@ -131,15 +206,19 @@ class UserManager {
         }
         
         while(sqlite3_step(stmt) == SQLITE_ROW){
-            let username = String(cString: sqlite3_column_text(stmt, 0))
-            let password = String(cString: sqlite3_column_text(stmt, 1))
-            let phoneNumber = sqlite3_column_text(stmt, 2) != nil ? String(cString: sqlite3_column_text(stmt, 2)) : nil
-            let livingAddress = sqlite3_column_text(stmt, 3) != nil ? String(cString: sqlite3_column_text(stmt, 3)) : nil
-            let email = sqlite3_column_text(stmt, 4) != nil ? String(cString: sqlite3_column_text(stmt, 4)) : nil
-            result.append((username, password, phoneNumber, livingAddress, email))
-        }
-        
-        return result
+                let username = String(cString: sqlite3_column_text(stmt, 0))
+                let password = String(cString: sqlite3_column_text(stmt, 1))
+                let phoneNumber = sqlite3_column_text(stmt, 2) != nil ? String(cString: sqlite3_column_text(stmt, 2)) : nil
+                let livingAddress = sqlite3_column_text(stmt, 3) != nil ? String(cString: sqlite3_column_text(stmt, 3)) : nil
+                let email = sqlite3_column_text(stmt, 4) != nil ? String(cString: sqlite3_column_text(stmt, 4)) : nil
+                // Get height and weight.
+                let height = sqlite3_column_text(stmt, 5) != nil ? String(cString: sqlite3_column_text(stmt, 5)) : nil
+                let weight = sqlite3_column_text(stmt, 6) != nil ? String(cString: sqlite3_column_text(stmt, 6)) : nil
+
+                result.append((username, password, phoneNumber, livingAddress, email, height, weight))
+            }
+
+            return result
     }
 
     
