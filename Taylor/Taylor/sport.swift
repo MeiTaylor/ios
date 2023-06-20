@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import AVFoundation
 
-class sport: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate  {
+
+class sport: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
     
     @IBOutlet weak var minutesPicker: UIPickerView!
@@ -18,20 +20,32 @@ class sport: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate  {
     
     @IBOutlet weak var timerLabel: UILabel!
     
+    @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var chooseButton: UIButton!
+    
+    
+    
     
     
     // 分钟和秒钟的数组
-       var minutes = [Int](0...59)
-       var seconds = [Int](0...59)
-       
-       // 计时器剩余的总秒数
-       var totalSeconds = 0
-       
-       // 计时器
-       var timer = Timer()
-       
-       // 表示计时器是否正在运行的布尔值
-       var isRunning = false
+    var minutes = [Int](0...59)
+    var seconds = [Int](0...59)
+
+    // 计时器剩余的总秒数
+    var totalSeconds = 0
+
+    // 计时器
+    var timer = Timer()
+
+    // 表示计时器是否正在运行的布尔值
+    var isRunning = false
+
+    var audioPlayer: AVAudioPlayer?
+
+    
+    
+    
 
        override func viewDidLoad() {
            super.viewDidLoad()
@@ -45,6 +59,13 @@ class sport: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate  {
            // 设置初始的计时器剩余时间
            totalSeconds = minutes[minutesPicker.selectedRow(inComponent: 0)]*60 + seconds[secondsPicker.selectedRow(inComponent: 0)]
            timerLabel.text = String(totalSeconds)
+           
+           
+           
+           chooseButton.addTarget(self, action: #selector(chooseImage), for: .touchUpInside)
+           
+           
+           
        }
 
        // UIPickerViewDataSource方法
@@ -78,20 +99,23 @@ class sport: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate  {
 
        @IBAction func startPauseTapped(_ sender: Any) {
            if !isRunning {
-               // 获取选中的分钟和秒钟，计算总秒数
-               totalSeconds = minutes[minutesPicker.selectedRow(inComponent: 0)]*60 + seconds[secondsPicker.selectedRow(inComponent: 0)]
-               if totalSeconds > 0 {
-                   // 开始计时器
-                   isRunning = true
-                   startPauseButton.setTitle("暂停", for: .normal)
-                   timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-               }
-           } else {
-               // 暂停计时器
-               isRunning = false
-               timer.invalidate()
-               startPauseButton.setTitle("开始", for: .normal)
-           }
+                // 获取选中的分钟和秒钟，计算总秒数
+                totalSeconds = minutes[minutesPicker.selectedRow(inComponent: 0)]*60 + seconds[secondsPicker.selectedRow(inComponent: 0)]
+                if totalSeconds > 0 {
+                    // 开始计时器
+                    isRunning = true
+                    let attributedString = NSAttributedString(string: "暂停", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 30), NSAttributedString.Key.foregroundColor : UIColor.green])
+                    startPauseButton.setAttributedTitle(attributedString, for: .normal)
+                    timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+                }
+            } else {
+                // 暂停计时器
+                isRunning = false
+                timer.invalidate()
+                let attributedString = NSAttributedString(string: "开始", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 30), NSAttributedString.Key.foregroundColor : UIColor.black])
+                startPauseButton.setAttributedTitle(attributedString, for: .normal)
+            }
+           
        }
 
     // 更新计时器
@@ -110,11 +134,75 @@ class sport: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate  {
         } else {
             // 计时器到达0，停止计时器
             timer.invalidate()
-                        isRunning = false
-                        startPauseButton.setTitle("开始", for: .normal)
-                    }
+            isRunning = false
+            let attributedString = NSAttributedString(string: "开始", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 30), NSAttributedString.Key.foregroundColor : UIColor.black])
+            startPauseButton.setAttributedTitle(attributedString, for: .normal)
+            
+            // 播放音频
+            if let url = Bundle.main.url(forResource: "alarm", withExtension: "mp3") {
+                do {
+                    audioPlayer = try AVAudioPlayer(contentsOf: url)
+                    audioPlayer?.play()
+                } catch {
+                    print("无法加载音频文件")
                 }
             }
+        }
+    }
+
+
+   
+    
+    
+    
+    @objc func chooseImage() {
+        let alertController = UIAlertController(title: "选择图片", message: "请选择一个选项", preferredStyle: .actionSheet)
+        let cameraAction = UIAlertAction(title: "拍摄照片", style: .default) { _ in
+            self.openCamera()
+        }
+        let photoLibraryAction = UIAlertAction(title: "选择本地照片", style: .default) { _ in
+            self.openPhotoLibrary()
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        
+        alertController.addAction(cameraAction)
+        alertController.addAction(photoLibraryAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+
+    func openCamera() {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            print("此设备不支持相机")
+            return
+        }
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .camera
+        present(picker, animated: true, completion: nil)
+    }
+
+    func openPhotoLibrary() {
+        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
+            print("无法访问相册")
+            return
+        }
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true, completion: nil)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imageView.image = pickedImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
+
+    
+    }
             
             
             

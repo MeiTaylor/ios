@@ -10,6 +10,9 @@
 		04091D9B2A414F4F002C8CFD /* DropdownMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04091D9A2A414F4F002C8CFD /* DropdownMenuViewController.swift */; };
 		04091D9D2A415457002C8CFD /* person_sport_design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04091D9C2A415457002C8CFD /* person_sport_design.swift */; };
 		04091DA12A418214002C8CFD /* sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04091DA02A418214002C8CFD /* sport.swift */; };
+		04091DA32A418E96002C8CFD /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04091DA22A418E96002C8CFD /* alarm.mp3 */; };
+		04091DA52A41932D002C8CFD /* mine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04091DA42A41932D002C8CFD /* mine.swift */; };
+		04091DA72A4198B9002C8CFD /* personal_info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04091DA62A4198B9002C8CFD /* personal_info.swift */; };
 		04712B582A40693D00A1854A /* user_manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04712B572A40693D00A1854A /* user_manager.swift */; };
 		04712B5A2A40824A00A1854A /* run.gif in Resources */ = {isa = PBXBuildFile; fileRef = 04712B592A40824A00A1854A /* run.gif */; };
 		04712B5C2A4086BF00A1854A /* run.png in Resources */ = {isa = PBXBuildFile; fileRef = 04712B5B2A4086BF00A1854A /* run.png */; };
@@ -48,6 +51,9 @@
 		04091D9A2A414F4F002C8CFD /* DropdownMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownMenuViewController.swift; sourceTree = "<group>"; };
 		04091D9C2A415457002C8CFD /* person_sport_design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = person_sport_design.swift; sourceTree = "<group>"; };
 		04091DA02A418214002C8CFD /* sport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sport.swift; sourceTree = "<group>"; };
+		04091DA22A418E96002C8CFD /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = alarm.mp3; path = ../../alarm.mp3; sourceTree = "<group>"; };
+		04091DA42A41932D002C8CFD /* mine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mine.swift; sourceTree = "<group>"; };
+		04091DA62A4198B9002C8CFD /* personal_info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = personal_info.swift; sourceTree = "<group>"; };
 		04712B572A40693D00A1854A /* user_manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user_manager.swift; sourceTree = "<group>"; };
 		04712B592A40824A00A1854A /* run.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = run.gif; path = ../../run.gif; sourceTree = "<group>"; };
 		04712B5B2A4086BF00A1854A /* run.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = run.png; path = ../../run.png; sourceTree = "<group>"; };
@@ -117,12 +123,15 @@
 		0499C82C2A3F5A7F009119E6 /* Taylor */ = {
 			isa = PBXGroup;
 			children = (
+				04091DA22A418E96002C8CFD /* alarm.mp3 */,
 				0499C82D2A3F5A7F009119E6 /* AppDelegate.swift */,
 				0499C82F2A3F5A7F009119E6 /* SceneDelegate.swift */,
 				0499C8312A3F5A7F009119E6 /* ViewController.swift */,
 				04712B592A40824A00A1854A /* run.gif */,
 				0499C85D2A3F63D8009119E6 /* login_VC.swift */,
 				0499C8332A3F5A7F009119E6 /* Main.storyboard */,
+				04091DA62A4198B9002C8CFD /* personal_info.swift */,
+				04091DA42A41932D002C8CFD /* mine.swift */,
 				04091D9A2A414F4F002C8CFD /* DropdownMenuViewController.swift */,
 				04712B5B2A4086BF00A1854A /* run.png */,
 				04091D9C2A415457002C8CFD /* person_sport_design.swift */,
@@ -260,6 +269,7 @@
 			files = (
 				04712B5A2A40824A00A1854A /* run.gif in Resources */,
 				04712B5C2A4086BF00A1854A /* run.png in Resources */,
+				04091DA32A418E96002C8CFD /* alarm.mp3 in Resources */,
 				0499C83A2A3F5A81009119E6 /* LaunchScreen.storyboard in Resources */,
 				0499C8372A3F5A81009119E6 /* Assets.xcassets in Resources */,
 				0499C8352A3F5A7F009119E6 /* Main.storyboard in Resources */,
@@ -295,6 +305,8 @@
 				0499C85E2A3F63D8009119E6 /* login_VC.swift in Sources */,
 				04091DA12A418214002C8CFD /* sport.swift in Sources */,
 				0499C8302A3F5A7F009119E6 /* SceneDelegate.swift in Sources */,
+				04091DA52A41932D002C8CFD /* mine.swift in Sources */,
+				04091DA72A4198B9002C8CFD /* personal_info.swift in Sources */,
 				04091D9B2A414F4F002C8CFD /* DropdownMenuViewController.swift in Sources */,
 				04712B582A40693D00A1854A /* user_manager.swift in Sources */,
 			);
