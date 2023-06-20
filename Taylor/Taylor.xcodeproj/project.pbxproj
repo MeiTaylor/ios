@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04091D9B2A414F4F002C8CFD /* DropdownMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04091D9A2A414F4F002C8CFD /* DropdownMenuViewController.swift */; };
+		04091D9D2A415457002C8CFD /* person_sport_design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04091D9C2A415457002C8CFD /* person_sport_design.swift */; };
+		04091DA12A418214002C8CFD /* sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04091DA02A418214002C8CFD /* sport.swift */; };
 		04712B582A40693D00A1854A /* user_manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04712B572A40693D00A1854A /* user_manager.swift */; };
 		04712B5A2A40824A00A1854A /* run.gif in Resources */ = {isa = PBXBuildFile; fileRef = 04712B592A40824A00A1854A /* run.gif */; };
 		04712B5C2A4086BF00A1854A /* run.png in Resources */ = {isa = PBXBuildFile; fileRef = 04712B5B2A4086BF00A1854A /* run.png */; };
@@ -42,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04091D9A2A414F4F002C8CFD /* DropdownMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownMenuViewController.swift; sourceTree = "<group>"; };
+		04091D9C2A415457002C8CFD /* person_sport_design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = person_sport_design.swift; sourceTree = "<group>"; };
+		04091DA02A418214002C8CFD /* sport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sport.swift; sourceTree = "<group>"; };
 		04712B572A40693D00A1854A /* user_manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user_manager.swift; sourceTree = "<group>"; };
 		04712B592A40824A00A1854A /* run.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = run.gif; path = ../../run.gif; sourceTree = "<group>"; };
 		04712B5B2A4086BF00A1854A /* run.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = run.png; path = ../../run.png; sourceTree = "<group>"; };
@@ -117,13 +123,16 @@
 				04712B592A40824A00A1854A /* run.gif */,
 				0499C85D2A3F63D8009119E6 /* login_VC.swift */,
 				0499C8332A3F5A7F009119E6 /* Main.storyboard */,
+				04091D9A2A414F4F002C8CFD /* DropdownMenuViewController.swift */,
 				04712B5B2A4086BF00A1854A /* run.png */,
+				04091D9C2A415457002C8CFD /* person_sport_design.swift */,
 				0499C8612A3F6D78009119E6 /* success_VC.swift */,
 				0499C85F2A3F686B009119E6 /* register_VC.swift */,
 				0499C8362A3F5A81009119E6 /* Assets.xcassets */,
 				0499C8382A3F5A81009119E6 /* LaunchScreen.storyboard */,
 				0499C83B2A3F5A81009119E6 /* Info.plist */,
 				04712B572A40693D00A1854A /* user_manager.swift */,
+				04091DA02A418214002C8CFD /* sport.swift */,
 			);
 			path = Taylor;
 			sourceTree = "<group>";
@@ -279,11 +288,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0499C8622A3F6D78009119E6 /* success_VC.swift in Sources */,
+				04091D9D2A415457002C8CFD /* person_sport_design.swift in Sources */,
 				0499C8322A3F5A7F009119E6 /* ViewController.swift in Sources */,
 				0499C82E2A3F5A7F009119E6 /* AppDelegate.swift in Sources */,
 				0499C8602A3F686B009119E6 /* register_VC.swift in Sources */,
 				0499C85E2A3F63D8009119E6 /* login_VC.swift in Sources */,
+				04091DA12A418214002C8CFD /* sport.swift in Sources */,
 				0499C8302A3F5A7F009119E6 /* SceneDelegate.swift in Sources */,
+				04091D9B2A414F4F002C8CFD /* DropdownMenuViewController.swift in Sources */,
 				04712B582A40693D00A1854A /* user_manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
