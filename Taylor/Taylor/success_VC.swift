@@ -9,7 +9,7 @@ import UIKit
 
 class success_VC: UIViewController {
 
-    var text = ""
+    var text = "注册成功"
     
     
     @IBOutlet weak var text_label: UILabel!

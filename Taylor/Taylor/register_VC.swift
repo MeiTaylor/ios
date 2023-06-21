@@ -42,12 +42,14 @@ class register_VC: UIViewController {
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
             
         if identifier == "success" {
+            
                 
             if let username = username_text.text, !username.isEmpty,
                 let password = password_text.text, !password.isEmpty {
                     let phoneNumber = phone_number.text
                     let livingAddress = living_address.text
                     let email = email.text
+                
                     // Height and Weight not provided at registration.
                     if UserManager.shared.register(username: username, password: password, phoneNumber: phoneNumber, livingAddress: livingAddress, email: email) {
                        

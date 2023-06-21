@@ -21,6 +21,7 @@ class login_VC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         //print(error_label.text)
+        print("登陆喽")
         error_label.text=""
 
 
